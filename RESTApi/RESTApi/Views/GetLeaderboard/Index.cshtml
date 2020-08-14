@@ -1,0 +1,56 @@
+﻿@model IEnumerable<RESTApi.Models.Leaderboard>
+
+@{
+    ViewBag.Title = "Leaderboard";
+}
+
+<h2>Leaderboard</h2>
+
+<p>
+    @Html.ActionLink("Create New Entry", "Create", null, new { Style = "color:#03071e" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GamesPlayed)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model == null)
+    {
+        @Html.Raw("No items found")
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Score)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.GamesPlayed)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { Style = "color:#03071e" })
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+<div>
+    @Html.ActionLink("Back to Home Page", "Index", "Home", null, new { Style = "color:#03071e" })
+</div>

@@ -1,0 +1,49 @@
+﻿@model RESTApi.Models.User
+
+@{
+    ViewBag.Title = "Searched User";
+}
+
+<h2>Searched User</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model == null)
+    {
+        @Html.Raw("No items found")
+    }
+    else
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => m.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.LastName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { Style = "color:#03071e" })
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+            </td>
+        </tr>
+    }
+</table>
+
+<div>
+    @Html.ActionLink("Back to Search", "SearchByUserId", "GetUsers", null, new { Style = "color:#03071e" })
+</div>
